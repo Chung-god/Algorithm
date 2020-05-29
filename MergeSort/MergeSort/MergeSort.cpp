@@ -40,6 +40,7 @@ void merge(int a[], int m, int middle, int n) {
     }
 }
 
+
 //일단 반으로 나누고 합친다.
 void mergeSort(int a[], int m, int n) {
     //크기가 1보다 큰 경우 
