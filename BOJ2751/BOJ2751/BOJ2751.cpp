@@ -1,32 +1,50 @@
-﻿// BOJ2750.cpp : 이 파일에는 'main' 함수가 포함됩니다. 거기서 프로그램 실행이 시작되고 종료됩니다.
+﻿// BOJ2751.cpp : 이 파일에는 'main' 함수가 포함됩니다. 거기서 프로그램 실행이 시작되고 종료됩니다.
 //
 
 #include <stdio.h>
-
-int main()
-{
-    int array[1001];
-    int num =3 ;
-    int i, j,temp;
-    //scanf_s("%d", &num);
-
-    for (i = 0; i < num; i++) {
-        scanf_s("%d", &array[i]);
+#define SIZE 1000001
+int array[SIZE];
+int num;
+void quickSort(int* data, int start, int end) {
+    if (start >= end) {
+        return;
     }
-    //BubbleSort
-    for (i = 0; i < num; i++) {
-        for (j = 0;j < num - i -1; j++) {
-            if (array[j] > array[j + 1]) {
-                temp = array[j];
-                array[j] = array[j + 1];
-                array[j + 1] = temp;
-            }
+    int key = start;
+    int i = start + 1;
+    int j = end;
+    int temp;
+    while (i <= j) {
+        while (data[i] <= data[key] && i <= end)
+            i++;
+        while (data[j] >= data[key] && j > start)
+            j--;
+        if (i > j) {
+            temp = data[j];
+            data[j] = data[key];
+            data[key] = temp;
+        }else{
+            temp = data[j];
+            data[j] = data[i];
+            data[i] = temp;
         }
     }
+    quickSort(data, start, j - 1);
+    quickSort(data, j+1, end);
 
-    for (i = 0; i < num; i++) {
+}
+int main()
+{
+    
+    int i;
+    scanf_s("%d", &num);
+
+    for (i = 0; i < num; i++)
+        scanf_s("%d", &array[i]);
+
+    quickSort(array, 0, num-1);
+
+    for (i = 0; i < num; i++)
         printf("%d\n", array[i]);
-    }
 }
 
 // 프로그램 실행: <Ctrl+F5> 또는 [디버그] > [디버깅하지 않고 시작] 메뉴
