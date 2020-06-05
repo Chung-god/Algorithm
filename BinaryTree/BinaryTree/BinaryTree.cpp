@@ -17,27 +17,27 @@ typedef struct node {
 //전위 순회 구현
 void preorder(treePointer ptr) {
     if (ptr) {
-        cout << ptr->data << ' ';
-        preorder(ptr->leftChild);
-        preorder(ptr->rightChild);
+        cout << ptr->data << ' '; // (1) 먼저 자기 자신을 처리
+        preorder(ptr->leftChild); // (2) 왼쪽 자식 방문
+        preorder(ptr->rightChild); //(3) 오른쪽 자식 방문
     }
 }
 
 //중위 순회 구현
 void inorder(treePointer ptr) {
     if (ptr) {
-        preorder(ptr->leftChild);
-        cout << ptr->data << ' ';
-        preorder(ptr->rightChild);
+        preorder(ptr->leftChild); //(1) 왼쪽 자식 방문
+        cout << ptr->data << ' '; //(2) 자기 자신을 처리
+        preorder(ptr->rightChild);//(3) 오른쪽 자식 방문
     }
 }
 
 //후위 순회 구현
 void postorder(treePointer ptr) {
     if (ptr) {      
-        preorder(ptr->leftChild);
-        preorder(ptr->rightChild);
-        cout << ptr->data << ' ';
+        preorder(ptr->leftChild); //(1) 왼쪽 자식 방문
+        preorder(ptr->rightChild);//(2) 오른쪽 자식 방문
+        cout << ptr->data << ' '; //(3) 자기 자신을 처리
     }
 }
 int main()
@@ -62,8 +62,13 @@ int main()
     }
 
     //전위 진행
+    printf("전위순회 방문 순서: ");
     preorder(&nodes[1]);
+    printf("\n");
+    printf("중위순회 방문 순서: ");
     inorder(&nodes[1]);
+    printf("\n");
+    printf("후위순회 방문 순서: ");
     postorder(&nodes[1]);
 }
 
