@@ -44,12 +44,21 @@ void topoloySort() {
 
 int main()
 {
-    n = 7;
+    n = 6;
     a[1].push_back(2);
     inDegree[2]++;
-    a[1].push_back(5);
+    a[1].push_back(3);
+    inDegree[3]++;
+    a[2].push_back(4);
+    inDegree[4]++;
+    a[4].push_back(6);
+    inDegree[6]++;
+    a[6].push_back(5);
     inDegree[5]++;
-    a[2].push_back[3]
+    a[3].push_back(5);
+    inDegree[5];
+
+    topoloySort();
 }
 
 // 프로그램 실행: <Ctrl+F5> 또는 [디버그] > [디버깅하지 않고 시작] 메뉴
