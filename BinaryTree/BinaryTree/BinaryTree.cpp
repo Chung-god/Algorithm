@@ -64,10 +64,10 @@ int main()
     //전위 진행
     printf("전위순회 방문 순서: ");
     preorder(&nodes[1]);
-    printf("\n");
+    printf("\n\n");
     printf("중위순회 방문 순서: ");
     inorder(&nodes[1]);
-    printf("\n");
+    printf("\n\n");
     printf("후위순회 방문 순서: ");
     postorder(&nodes[1]);
 }
