@@ -5,12 +5,12 @@
 #include <vector>
 
 using namespace std;
-
 int number = 7;//노드 수
 int c[8];//방문처리를 위한 배열
 vector<int> a[8];//7개의 노드가 각각 인접한 노드를 가질 수 있게
 
 void dfs(int x) {
+
     if (c[x]) return;//방문한 노드이면 바로 리턴
     //방문을 안 한 노드
     c[x] = true;//방문 처리 
@@ -23,9 +23,10 @@ void dfs(int x) {
 
 int main()
 {
+
 	//1과 2를 연결 
-	a[1].push_back(2);
-	a[2].push_back(1);
+		a[1].push_back(2);
+a[2].push_back(1);
 
 	//1과 3을 연결 
 	a[1].push_back(3);
@@ -34,7 +35,6 @@ int main()
 	//2과 3을 연결 
 	a[2].push_back(3);
 	a[3].push_back(2);
-
 	//2와 4를 연결 
 	a[2].push_back(4);
 	a[4].push_back(2);
