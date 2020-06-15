@@ -39,9 +39,9 @@ void maxFlow(int start, int end) {
         //거꾸로 최소 유량 탐색
         for (int i = end; i != start; i = d[i]) {
             flow = min(flow, c[d[i]][i] - f[d[i]][i]);
-            
         }
             //최소 유량만큼 추가합니다. 
+            //음의 유량 계산
         for (int i = end; i != start; i = d[i]) {
             f[d[i]][i] += flow;
             f[i][d[i]] -= flow;
@@ -51,6 +51,7 @@ void maxFlow(int start, int end) {
 }
 int main()
 {
+    //그래프 그리기
     a[1].push_back(2);
     a[2].push_back(2);
     c[1][2] = 12;
