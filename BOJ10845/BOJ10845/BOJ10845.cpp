@@ -11,7 +11,6 @@ int main()
 	while (N--) {
 		char cmd[6];
 		scanf("%s", &cmd);
-		//printf("%c %c", cmd[0], cmd[1]);
 		if (cmd[0] == 'p') {
 			if (cmd[1] == 'u') {
 				int num;
@@ -31,8 +30,7 @@ int main()
 				printf("0\n");
 				continue;
 			}
-			if (front == 0) printf("%d\n", back - front);
-			else printf("%d\n", back - front + 1);
+			printf("%d\n", back - front); //back-front 아님 back 위치를 생각해보면 됨
 		}
 		else if (cmd[0] == 'f' || cmd[0] == 'b') {
 			if (back == front) {
