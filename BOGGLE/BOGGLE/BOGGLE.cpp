@@ -6,7 +6,7 @@
 using namespace std;
 
 const int dx[8] = { -1,-1,-1,0,1,1,1,0 };
-const int dy[9] = { -1,0,1,1,1,0,-1,-1 };
+const int dy[8] = { -1,0,1,1,1,0,-1,-1 };
 char wordMap[5][5] = {
     {'N','N','N','N','S'},
     {'N','E','E','E','N'},
@@ -15,18 +15,17 @@ char wordMap[5][5] = {
     {'N','N','N','N','N'},
 };
 int hasWord(int x, int y, string word, int cnt) {
-    if (word.length() == cnt + 1)
-        return 1;
     if (x > 4 || x < 0 || y > 4 || y < 0)
         return 0;
     if (cnt == 0 && wordMap[x][y] != word[0])
         return 0;    
-	if (word.length() == 1 &&wordMap[x][y] == word[0])
+	if (word.length()==1)
 		return 1;
 
-    
+    cout << wordMap[x][y] << endl;
     if (word[cnt] == wordMap[x][y]) {
-        for (int  direction = 0; direction < 8; direction++) {
+        if (word.length() == cnt + 1) return 1;
+        for (int direction = 0; direction < 8; direction++) {
             int nextX = x + dx[direction];
             int nextY = y + dy[direction];
             cout << nextX << "," << nextY << endl;
@@ -39,7 +38,7 @@ int main()
 {
     for (int x = 0; x < 5; x++) {
         for (int y = 0;y < 5;y++) {
-            if (hasWord(x, y, "YE", 0)) {
+            if (hasWord(x, y, "YES", 0)) {
                 cout << "There are word" << endl;
             }
         }
