@@ -2,10 +2,46 @@
 //
 
 #include <iostream>
+#include <algorithm>
+using namespace std;
 
+class Student{
+public:
+	int country;
+	int studentNum;
+	int point;
+	
+	Student(int country, int studentNum, int point) {
+		this->country = country;
+		this->studentNum = studentNum;
+		this->point = point;	
+	}
+	Student() {};
+	bool operator <(Student& student) {
+		return this->point > student.point;
+	}
+};
 int main()
 {
-    std::cout << "Hello World!\n";
+	int N;
+	scanf_s("%d",&N);
+	Student students[100];
+	
+	for (int i = 0; i < N; i++) {
+		int a, b, c;
+		scanf_s("%d %d %d",&a,&b,&c);
+		students[i] = Student(a, b, c);
+	}
+	sort(students, students + N);
+	printf("%d %d\n", students[0].country, students[0].studentNum);
+	printf("%d %d\n", students[1].country, students[1].studentNum);
+	if (students[0].country == students[1].country) {
+		int i = 2;
+		while (students[i].country == students[0].country) i++;
+		printf("%d %d\n", students[i].country, students[i].studentNum);
+		return 0;
+	}
+	printf("%d %d\n", students[2].country, students[2].studentNum);
 }
 
 // 프로그램 실행: <Ctrl+F5> 또는 [디버그] > [디버깅하지 않고 시작] 메뉴
