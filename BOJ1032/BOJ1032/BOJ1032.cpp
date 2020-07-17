@@ -1,47 +1,30 @@
-﻿// BOJ1406.cpp : 이 파일에는 'main' 함수가 포함됩니다. 거기서 프로그램 실행이 시작되고 종료됩니다.
+﻿// BOJ1032.cpp : 이 파일에는 'main' 함수가 포함됩니다. 거기서 프로그램 실행이 시작되고 종료됩니다.
 //
 
 #include <iostream>
-#include <string>
-using namespace std;
+#include <vector>
 int main()
 {
-	cin.tie(NULL);
-	ios::sync_with_stdio(false);
-
-	int cur;
-	int cmdNum;
-	char cmd;
-	string word;
-	cin >> word;
-	cur = word.size();
-	cin >> cmdNum;
-	
-	while (cmdNum--) {
-		cin >> cmd;
-		cout << "cur :" << cur << endl;
-		if (cmd == 'P') {
-			char temp;
-			cin >> temp;;
-				}
-		else if (cmd == 'L') {
-			if(cur != 0) cur -= 1;
-		}
-		else if (cmd == 'B') {
-			if (cur-1 != 0) {
-				for (int i = cur - 1;v[i] != NULL;i++) {
-					v[i] = v[i + 1];
-				}
-			}
-		}
-		else {
-			if (cur != v.size()) cur += 1;
-		}
+	std::cin.tie(NULL);
+	std::ios::sync_with_stdio(false);
+	int N;
+	std::cin >> N;
+	std::vector<std::string> v;
+	std::string temp;
+	bool checked[50];
+	std::fill_n(checked, 50, true);
+	for (int i = 0; i < N; i++) {
+		std::cin >> temp;
+		v.push_back(temp);
 	}
-
-	for (int i = 0; i < v.size();i++)
-		cout << v[i];
-
+	std::string cmp = v[0];
+	int len = cmp.length();
+	for (int i = 0; i < N; i++) 
+		for (int j = 0; j < len; j++) 
+			if (cmp[j] != v[i][j]) checked[j] = false;
+	for (int i = 0; i < len; i++) 
+		if (checked[i] == true) std::cout << cmp[i];
+		else std::cout << '?';
 }
 
 // 프로그램 실행: <Ctrl+F5> 또는 [디버그] > [디버깅하지 않고 시작] 메뉴
