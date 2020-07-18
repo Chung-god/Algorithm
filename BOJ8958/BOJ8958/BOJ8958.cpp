@@ -1,47 +1,30 @@
-﻿// BOJ1406.cpp : 이 파일에는 'main' 함수가 포함됩니다. 거기서 프로그램 실행이 시작되고 종료됩니다.
+﻿// BOJ8958.cpp : 이 파일에는 'main' 함수가 포함됩니다. 거기서 프로그램 실행이 시작되고 종료됩니다.
 //
 
 #include <iostream>
-#include <string>
 using namespace std;
 int main()
 {
 	cin.tie(NULL);
 	ios::sync_with_stdio(false);
-
-	int cur;
-	int cmdNum;
-	char cmd;
-	string word;
-	cin >> word;
-	cur = word.size();
-	cin >> cmdNum;
-	
-	while (cmdNum--) {
-		cin >> cmd;
-		cout << "cur :" << cur << endl;
-		if (cmd == 'P') {
-			char temp;
-			cin >> temp;;
-				}
-		else if (cmd == 'L') {
-			if(cur != 0) cur -= 1;
-		}
-		else if (cmd == 'B') {
-			if (cur-1 != 0) {
-				for (int i = cur - 1;v[i] != NULL;i++) {
-					v[i] = v[i + 1];
-				}
+	int N;
+	cin >> N;
+	while (N--) {
+		string ox;
+		cin >> ox;
+		int result = 0;;
+		int temp = 0;
+		for (int i = 0;ox[i] != NULL;i++) {
+			if (ox[i] == 'O') {
+				temp += 1;
+				result += temp;
+			}
+			else {
+				temp = 0;
 			}
 		}
-		else {
-			if (cur != v.size()) cur += 1;
-		}
+		cout << result << "\n";
 	}
-
-	for (int i = 0; i < v.size();i++)
-		cout << v[i];
-
 }
 
 // 프로그램 실행: <Ctrl+F5> 또는 [디버그] > [디버깅하지 않고 시작] 메뉴

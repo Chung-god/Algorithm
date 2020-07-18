@@ -1,49 +1,47 @@
-﻿// BOJ1406.cpp : 이 파일에는 'main' 함수가 포함됩니다. 거기서 프로그램 실행이 시작되고 종료됩니다.
+﻿// BOJ6679.cpp : 이 파일에는 'main' 함수가 포함됩니다. 거기서 프로그램 실행이 시작되고 종료됩니다.
 //
 
 #include <iostream>
-#include <string>
-using namespace std;
-int main()
-{
-	cin.tie(NULL);
-	ios::sync_with_stdio(false);
 
-	int cur;
-	int cmdNum;
-	char cmd;
-	string word;
-	cin >> word;
-	cur = word.size();
-	cin >> cmdNum;
-	
-	while (cmdNum--) {
-		cin >> cmd;
-		cout << "cur :" << cur << endl;
-		if (cmd == 'P') {
-			char temp;
-			cin >> temp;;
-				}
-		else if (cmd == 'L') {
-			if(cur != 0) cur -= 1;
-		}
-		else if (cmd == 'B') {
-			if (cur-1 != 0) {
-				for (int i = cur - 1;v[i] != NULL;i++) {
-					v[i] = v[i + 1];
-				}
-			}
-		}
-		else {
-			if (cur != v.size()) cur += 1;
-		}
+int hex(int n) {
+	int result = 0;
+	while (n >=16) {
+		result += n % 16;
+		n = n / 16;
 	}
-
-	for (int i = 0; i < v.size();i++)
-		cout << v[i];
-
+	return result + n;
 }
 
+int duo(int n) { //12진법 duodecimal
+	int result = 0;
+	while (n >= 12) {
+		result += n % 12;
+		n = n / 12;
+	}
+	return result + n;
+}
+int dec(int n) {
+	int result = 0;
+	while (n >= 10) {
+		result += n % 10;
+		n = n / 10;
+	}
+	return result + n;
+}
+int main()
+{
+	std::cin.tie(NULL);
+	std::ios::sync_with_stdio(false);
+	
+	for (int n = 2992; n < 10000; n++) {
+		int h = hex(n);
+		int d = duo(n);
+		if (h != d)	continue;
+		int de = dec(n);
+		if (d == de) std::cout << n << std::endl;
+	}
+	
+}
 // 프로그램 실행: <Ctrl+F5> 또는 [디버그] > [디버깅하지 않고 시작] 메뉴
 // 프로그램 디버그: <F5> 키 또는 [디버그] > [디버깅 시작] 메뉴
 

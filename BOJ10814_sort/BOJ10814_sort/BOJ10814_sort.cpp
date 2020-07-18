@@ -1,47 +1,32 @@
-﻿// BOJ1406.cpp : 이 파일에는 'main' 함수가 포함됩니다. 거기서 프로그램 실행이 시작되고 종료됩니다.
+﻿// BOJ10814_sort.cpp : 이 파일에는 'main' 함수가 포함됩니다. 거기서 프로그램 실행이 시작되고 종료됩니다.
 //
 
 #include <iostream>
-#include <string>
+#include <vector>
+#include <algorithm>
 using namespace std;
+
+bool compare(pair<int, string> a, pair<int, string> b) {
+	if (a.first == b.first) return 1;
+	else return a.first > b.first;
+}
 int main()
 {
-	cin.tie(NULL);
-	ios::sync_with_stdio(false);
+	ios::sync_with_stdio
+	int N;
+	cin >> N;
+	vector<pair<int, string> >v;
 
-	int cur;
-	int cmdNum;
-	char cmd;
-	string word;
-	cin >> word;
-	cur = word.size();
-	cin >> cmdNum;
-	
-	while (cmdNum--) {
-		cin >> cmd;
-		cout << "cur :" << cur << endl;
-		if (cmd == 'P') {
-			char temp;
-			cin >> temp;;
-				}
-		else if (cmd == 'L') {
-			if(cur != 0) cur -= 1;
-		}
-		else if (cmd == 'B') {
-			if (cur-1 != 0) {
-				for (int i = cur - 1;v[i] != NULL;i++) {
-					v[i] = v[i + 1];
-				}
-			}
-		}
-		else {
-			if (cur != v.size()) cur += 1;
-		}
+	while (N--) {
+		int age;
+		string name;
+		cin >> age >> name;
+		v.push_back(make_pair(age, name));
 	}
-
-	for (int i = 0; i < v.size();i++)
-		cout << v[i];
-
+	sort(v.begin(), v.end(), compare);
+	for (int i = 0; i < v.size();i++) {
+		cout << v[i].first << " " << v[i].second << endl;
+	}
 }
 
 // 프로그램 실행: <Ctrl+F5> 또는 [디버그] > [디버깅하지 않고 시작] 메뉴
