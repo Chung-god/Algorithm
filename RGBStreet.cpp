@@ -1,8 +1,8 @@
 #include <iostream>
 using namespace std;
 
-int N;
-int RGB[1001][3];
+long long int N;
+long long int RGB[1001][3];
 int main(){
     cin>>N;
     for(int i = 0; i < N; i++)
@@ -30,7 +30,7 @@ int main(){
     //     cout<<"\n";
     // }
 
-    int min = 9999;
+    int min = RGB[N-1][0];
     for(int i = 0 ; i < 3; i++)
         if(RGB[N-1][i] < min) min = RGB[N-1][i];
     cout<<min;
