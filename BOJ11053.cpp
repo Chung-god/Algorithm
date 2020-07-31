@@ -1,34 +1,28 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 
-int DP[1001];
+int arr[1001];
+int dp[1001];
 int N;
 
 int main(){
     cin.tie(NULL);
     ios::sync_with_stdio(false);
     cin>>N;
-    for(int i = 0; i < N; i++){
-        cin>>DP[i];
-    }
-    int max;
-    int result = 1;
-    int flag = false;
-    for(int i = 1; i < N; i++){
-        if(flag){
-            if(DP[i] > max){
-                max = DP[i];
-                result++;
-                continue;
+    int max = 0;
+    for(int i = 0; i < N; i++)
+        cin>>arr[i];
+    for(int i =0; i < N; i++){
+        int min = 0;
+        for(int j = 0; j < i; j++){
+            if(arr[i] > arr[j]){
+                if(min < dp[j]) 
+                    min = dp[j];
             }
-            continue;
         }
-        if(!flag&&(DP[i] > DP[i-1])){
-            flag = true;
-            result++;
-            max = DP[i];
-        }
+        dp[i] = min + 1;
+        if(max < dp[i]) max = dp[i];
     }
-   
-    cout<<result;
+    for(int i = 0; i < N; i++) cout<<dp[i]<<" ";
 }
