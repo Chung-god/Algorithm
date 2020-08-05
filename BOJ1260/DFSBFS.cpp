@@ -9,7 +9,7 @@ int nodeNum; //노드의 수
 int edgeNum; //간선의 수
 int c[1001];//방문처리를 위한 배열 
 int start; //시작 노드
-vector<int> a[1000]; //노드마다 인접노드 
+vector<int> a[1001]; //노드마다 인접노드 
 
 void dfs(int x){
     if(c[x]) return;
