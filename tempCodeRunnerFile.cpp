@@ -1,4 +1,10 @@
-  // for(int i = 0; i < N; i++){
-    //     //cout<<v[i].first<<" "<<v[i].second<<"\n";
-    //     cout<<num[i]<<" ";
-    // }
+
+    for(int i = 1; i < N; i++){
+        if(cfn[i].first >= result[j].second){
+            result.push_back(cfn[i]);
+            j++;
+            cout<<cfn[i].first<<","<<cfn[i].second<<" ";
+        } 
+    }
+    cout<<j+1;
+}
