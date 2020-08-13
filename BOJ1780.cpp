@@ -3,7 +3,7 @@ using namespace std;
 
 int N;
 int minus1 = 0,zero = 0, plus1 = 0 ;
-int paper[2200][2200];
+int paper[3000][3000];
 
 bool nineSame(int x, int y,int size){ //size 는 n/3 이어야함
     int temp = paper[x][y];
@@ -43,16 +43,8 @@ void cutPaper(int x, int y,int n){
 
 int main(){
     cin>> N;
-    for(int i = 1; i <= N; i++){
-        for(int j = 1; j <= N; j++){
-            int temp;
-            cin>>temp;
-            paper[i][j] = temp;
-        }
-    }
     
     if(N == 1){
-        cout<<"Hello;
         int temp;
         cin>>temp;
         if(temp == 1) plus1++;
@@ -62,6 +54,16 @@ int main(){
         cout<<minus1<<"\n"<<zero<<"\n"<<plus1<<"\n";
         return 0;
     }
+
+    for(int i = 1; i <= N; i++){
+        for(int j = 1; j <= N; j++){
+            int temp;
+            cin>>temp;
+            paper[i][j] = temp;
+        }
+    }
+    
+
     
     cutPaper(1,1,N);
     cout<<minus1<<"\n"<<zero<<"\n"<<plus1<<"\n";
