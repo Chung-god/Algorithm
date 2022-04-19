@@ -42,5 +42,31 @@ while queue:
 print(len(pqueue))
 
                 
+#고수분 코드
+import sys
+input = sys.stdin.readline
+
+n, m = map(int, input().split())
+
+k = map(int, input().split())
+num = next(k) #하나 점프, 나중에 사용해보기
+fact = list(k)
+counted = set(fact) #set으로 바꿔서 차집합 구하기
+linked = []
+for _ in range(m):
+    k = map(int, input().split())
+    num = next(k)
+    linked.append(set(k))
+while fact and linked:
+    i = fact.pop()
+    new_linked = []
+    for k in linked:
+        if i in k: #리스트 안에 해당하는 값이 있으면 
+            fact += list(k.difference(counted))
+        else:
+            new_linked.append(k)
+    linked = new_linked
+
+print(len(linked))
         
 
