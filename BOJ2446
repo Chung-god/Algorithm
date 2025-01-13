@@ -1,0 +1,17 @@
+import sys
+
+input_data = sys.stdin.readlines() 
+
+T = int(input_data[0].strip())
+lines = [line.strip() for line in input_data[1:]]
+
+for t in range(T):
+	n, n_list, m, m_list = lines[:4]
+	n_list = set(n_list.strip().split()) #리스트를 집합으로 바꿈 시간 복잡도 O(1)
+	m_list = m_list.strip().split()
+	for i in m_list:
+		if i in n_list:
+			print(1)
+		else:
+			print(0)
+	lines = lines[4:]
