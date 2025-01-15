@@ -1,0 +1,33 @@
+def count_lans(lines, length):
+    # 특정 길이로 랜선을 자를 때 만들 수 있는 랜선의 개수 합산
+    return sum(line // length for line in lines)
+
+
+def solve(lines, N):
+    # 이분 탐색을 위한 초기 값 설정
+    low, high = 0, max(lines)  # low는 0부터, high는 랜선 길이 중 최대값으로 설정
+    answer = 0  # 결과값을 저장할 변수 초기화
+
+    while low < high:  # low가 high보다 작을 때까지 반복
+        mid = (low + high) / 2  # 중간값 계산 (현재 랜선 길이 후보)
+        toN = count_lans(lines, mid)  # mid 길이로 자른 랜선의 개수 계산
+
+        if toN >= N:  # 랜선 개수가 요구 개수 N 이상인 경우
+            answer = mid  # 현재 mid 값을 정답 후보로 저장
+            low = mid + 1  # 더 긴 랜선 길이를 찾기 위해 low를 mid + 1로 변경
+        else:  # 랜선 개수가 N보다 부족한 경우
+            high = mid - 1  # 더 짧은 랜선 길이를 찾기 위해 high를 mid - 1로 변경
+
+    return answer  # 최종적으로 가장 긴 랜선 길이를 반환
+
+
+import sys
+
+# 콘솔로부터 입력을 받아 처리
+input_lines = sys.stdin.read().strip().split('\n')  # 여러 줄의 입력을 읽고 줄바꿈 제거
+
+# 첫 줄 처리: 랜선 개수 K와 필요한 랜선 개수 N 추출
+K, N = map(int, input_lines[0].split())
+
+# 랜선 길이 리스트 처리: 두 번째 줄부터 K개의 랜선 길이를 정수형 리스트로 변환
+lines = [int(input_lines[i + 1].strip()) for i in range(K)]
